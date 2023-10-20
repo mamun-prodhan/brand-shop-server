@@ -74,7 +74,15 @@ async function run() {
       res.send(result);
     });
 
-    app.delete(`mycart/${_id}`);
+    app.delete("/mycart/:id", async (req, res) => {
+      const id = req.params.id;
+      console.log("delete this is: ", id);
+      const query = { _id: new ObjectId(id) };
+      console.log("query", query);
+      const result = await myCartCollection.deleteOne(query);
+      console.log(result);
+      res.send(result);
+    });
 
     // app.post("/brands", async (req, res) => {
     //   const testData = req.body;
