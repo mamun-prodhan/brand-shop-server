@@ -71,30 +71,30 @@ async function run() {
       res.send(result);
     });
 
-    // app.put("/update/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const data = req.body;
-    //   console.log(data);
-    //   const filter = { _id: new ObjectId(id) };
-    //   const options = { upsert: true };
-    //   const updatedData = {
-    //     $set: {
-    //       name: data.name,
-    //       brandName: data.brandName,
-    //       type: data.type,
-    //       image: data.image,
-    //       description: data.description,
-    //       price: data.price,
-    //       rating: data.rating,
-    //     },
-    //   };
-    //   const result = await brandItemsCollection.updateOne(
-    //     filter,
-    //     updatedData,
-    //     options
-    //   );
-    //   res.send(result);
-    // });
+    app.put("/update/:id", async (req, res) => {
+      const id = req.params.id;
+      const data = req.body;
+      console.log(data);
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+      const updatedData = {
+        $set: {
+          name: data.name,
+          brandName: data.brandName,
+          type: data.type,
+          image: data.image,
+          description: data.description,
+          price: data.price,
+          rating: data.rating,
+        },
+      };
+      const result = await brandItemsCollection.updateOne(
+        filter,
+        updatedData,
+        options
+      );
+      res.send(result);
+    });
 
     app.get("/mycart/:email", async (req, res) => {
       const email = req.params.email;
@@ -110,12 +110,12 @@ async function run() {
       res.send(result);
     });
 
-    app.post("/mycart", async (req, res) => {
-      const myCart = req.body;
-      console.log(myCart);
-      const result = await myCartCollection.insertOne(myCart);
-      res.send(result);
-    });
+    // app.post("/mycart", async (req, res) => {
+    //   const myCart = req.body;
+    //   console.log(myCart);
+    //   const result = await myCartCollection.insertOne(myCart);
+    //   res.send(result);
+    // });
 
     app.post("/brandItems", async (req, res) => {
       const brandItems = req.body;
