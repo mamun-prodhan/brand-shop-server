@@ -50,13 +50,13 @@ async function run() {
       res.send(result);
     });
 
-    app.get("/imageslider/:name", async (req, res) => {
-      const name = req.params.name;
-      const query = { brandName: name };
-      const result = await imageSliderCollection.findOne(query);
-      console.log(result);
-      res.send(result);
-    });
+    // app.get("/imageslider/:name", async (req, res) => {
+    //   const name = req.params.name;
+    //   const query = { brandName: name };
+    //   const result = await imageSliderCollection.findOne(query);
+    //   console.log(result);
+    //   res.send(result);
+    // });
 
     app.get("/details/:id", async (req, res) => {
       const id = req.params.id;
